@@ -1,0 +1,43 @@
+# Configuration Decap CMS — Cynthia Conte Antiquités
+
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "img"
+public_folder: "/img"
+
+locale: 'fr'
+
+site_url: https://cynthia-conte-antiquites.com
+display_url: cynthia-conte-antiquites.com
+logo_url: https://cynthia-conte-antiquites.com/apple-touch-icon.png
+
+collections:
+  - name: "catalogue"
+    label: "Catalogue"
+    label_singular: "Pièce"
+    folder: "_data/items"
+    create: true
+    delete: true
+    extension: "json"
+    format: "json"
+    slug: "{{slug}}"
+    identifier_field: "title"
+    summary: "{{title}} — {{price}}"
+    sortable_fields: ['title', 'price']
+    filter:
+      field: "key"
+      value: ""
+    fields:
+      - { name: "key", label: "Identifiant interne", widget: "string", hint: "Petit nom court sans accents ni espaces, ex: bar, viannay, taliesin. Ne PAS modifier après création.", pattern: ['^[a-z0-9_-]+$', "Lettres minuscules, chiffres, tirets uniquement"] }
+      - { name: "title", label: "Titre", widget: "string", hint: "Ex: Meuble bar italien" }
+      - { name: "category", label: "Catégorie · Époque", widget: "string", hint: "Ex: Design italien · Années 1950" }
+      - { name: "period", label: "Période complète (modal)", widget: "string", required: false }
+      - { name: "price", label: "Prix", widget: "string", hint: "Format libre. Ex: 6 000 EUR, Sur demande" }
+      - { name: "short_description", label: "Description courte (carte)", widget: "text" }
+      - { name: "description", label: "Description complète (modal)", widget: "text" }
+      - name: "images"
+        label: "Photos"
+        widget: "list"
+        field: { name: "image", label: "Photo", widget: "image" }
