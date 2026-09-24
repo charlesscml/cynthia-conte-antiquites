@@ -1,0 +1,4 @@
+# Génère _data/items/index.json (liste des pièces) à chaque déploiement
+[build]
+  publish = "."
+  command = '''node -e "const fs=require('fs');const d='_data/items';const f=fs.readdirSync(d).filter(n=>n.endsWith('.json')&&n!=='index.json');fs.writeFileSync(d+'/index.json',JSON.stringify(f));console.log(f)"'''
