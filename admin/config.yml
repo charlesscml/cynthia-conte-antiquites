@@ -22,13 +22,10 @@ collections:
     delete: true
     extension: "json"
     format: "json"
-    slug: "{{slug}}"
+    slug: "{{fields.key}}"
     identifier_field: "title"
     summary: "{{title}} — {{price}}"
     sortable_fields: ['title', 'price']
-    filter:
-      field: "key"
-      value: ""
     fields:
       - { name: "key", label: "Identifiant interne", widget: "string", hint: "Petit nom court sans accents ni espaces, ex: bar, viannay, taliesin. Ne PAS modifier après création.", pattern: ['^[a-z0-9_-]+$', "Lettres minuscules, chiffres, tirets uniquement"] }
       - { name: "title", label: "Titre", widget: "string", hint: "Ex: Meuble bar italien" }
